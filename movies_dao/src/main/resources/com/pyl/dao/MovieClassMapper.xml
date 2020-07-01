@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pyl.dao.MovieClassDao">
+    <select id="findAll" resultType="com.pyl.pojo.MovieClass">
+        select * from tb_movieclass;
+    </select>
+    <delete id="deleteClass" parameterType="string">
+        delete  from tb_movieclass where mId=#{mId}
+    </delete>
+    <insert id="insertClass" parameterType="com.pyl.pojo.MovieClass">
+        insert into tb_movieclass (id,mId,mName) values (null,#{mId},#{mName})
+    </insert>
+</mapper>

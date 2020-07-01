@@ -1,0 +1,8 @@
+com\pyl\service\MovieClassService.class
+com\pyl\service\UserService.class
+com\pyl\service\impl\MovieClassServiceImpl.class
+com\pyl\service\impl\LogServiceImpl.class
+com\pyl\service\MovieService.class
+com\pyl\service\impl\UserServiceImpl.class
+com\pyl\service\LogService.class
+com\pyl\service\impl\MovieServiceImpl.class

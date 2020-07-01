@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pyl.dao.MovieDao">
+
+    <select id="findAll" resultType="com.pyl.pojo.Video">
+        select v.vName,m.mName,v.vId,v.vUrl,v.vImg,v.vInfo,v.vCount,v.isVip from tb_video v left join tb_movieclass m on v.mName=m.mid
+    </select>
+
+    <select id="getVideoByVid" resultType="com.pyl.pojo.Video" parameterType="string">
+        select v.vName,m.mName,v.vId,v.vUrl,v.vImg,v.vInfo,v.vCount,v.isVip
+        from tb_video v
+        left join tb_movieclass m on v.mName=m.mid
+        where v.vId=#{vid}
+    </select>
+
+    <update id="updateVideo" parameterType="com.pyl.pojo.Video">
+        update tb_video set vCount=#{vCount} where vId=#{vId}
+    </update>
+
+    <select id="findLimit" resultType="com.pyl.pojo.Video">
+        select v.vName,m.mName,v.vId,v.vUrl,v.vImg,v.vInfo,v.vCount,v.isVip
+        from tb_video v
+        left join tb_movieclass m on v.mName=m.mid
+        order by v.vCount desc
+        limit   5;
+    </select>
+
+    <delete id="deleteMovie" parameterType="string">
+        delete from tb_video where vId=#{vId}
+    </delete>
+
+    <select id="findMoviesByClass" parameterType="string" resultType="com.pyl.pojo.Video">
+        select v.vName,m.mName,v.vId,v.vUrl,v.vImg,v.vInfo,v.vCount,v.isVip
+        from tb_video v
+        left join tb_movieclass m on v.mName=m.mid
+        where v.mName=#{mName}
+    </select>
+
+    <select id="findMovieByName" parameterType="string" resultType="com.pyl.pojo.Video">
+        select v.vName,m.mName,v.vId,v.vUrl,v.vImg,v.vInfo,v.vCount,v.isVip
+        from tb_video v
+        left join tb_movieclass m on v.mName=m.mid
+        where v.vName like #{vName}
+    </select>
+</mapper>
